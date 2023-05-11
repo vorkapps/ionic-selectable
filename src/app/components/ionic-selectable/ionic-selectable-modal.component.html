@@ -122,16 +122,15 @@
     (ionInfinite)="selectComponent._getMoreItems()">
     <ion-infinite-scroll-content></ion-infinite-scroll-content>
   </ion-infinite-scroll>
-  <ion-virtual-scroll class="ion-no-margin"
-    *ngIf="selectComponent.hasVirtualScroll && selectComponent._hasFilteredItems"
-    [items]="selectComponent._filteredGroups[0].items"
-    [headerFn]="selectComponent.virtualScrollHeaderFn"
-    [approxItemHeight]="selectComponent.virtualScrollApproxItemHeight">
+  <cdk-virtual-scroll-viewport class="ion-no-margin"
+     itemSize="selectComponent.virtualScrollApproxItemHeight" minBufferPx="900" maxBufferPx="1350"
+    *ngIf="selectComponent.hasVirtualScroll && selectComponent._hasFilteredItems">
     <ion-item-divider *virtualHeader="let header"
       [color]="selectComponent.groupColor ? selectComponent.groupColor : null">
       {{header}}
     </ion-item-divider>
-    <ion-item button="true" detail="false" *virtualItem="let item"
+    <ion-item button="true" detail="false"
+      *cdkVirtualFor="let item of selectComponent._filteredGroups[0].items"
       (click)="selectComponent._select(item)" class="ionic-selectable-item"
       [ngClass]="{
         'ionic-selectable-item-is-selected': selectComponent._isItemSelected(item),
@@ -171,7 +170,7 @@
         <ion-icon slot="icon-only" name="md-trash"></ion-icon>
       </ion-button>
     </ion-item>
-  </ion-virtual-scroll>
+  </cdk-virtual-scroll-viewport>
 </ion-content>
 <div class="ionic-selectable-add-item-template"
   *ngIf="selectComponent._isAddItemTemplateVisible"

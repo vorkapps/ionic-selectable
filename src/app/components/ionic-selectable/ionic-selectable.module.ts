@@ -36,6 +36,7 @@ export { IonicSelectableTitleTemplateDirective } from './ionic-selectable-title-
 export { IonicSelectableValueTemplateDirective } from './ionic-selectable-value-template.directive';
 export { IonicSelectableIconTemplateDirective } from './ionic-selectable-icon-template.directive';
 export { IonicSelectableComponent } from './ionic-selectable.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 const components = [IonicSelectableComponent, IonicSelectableModalComponent],
   directives = [
@@ -57,19 +58,19 @@ const components = [IonicSelectableComponent, IonicSelectableModalComponent],
   ];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule
-  ],
-  declarations: [
-    ...components,
-    ...directives
-  ],
-  exports: [
-    ...components,
-    ...directives
-  ],
-  entryComponents: components
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        ScrollingModule
+    ],
+    declarations: [
+        ...components,
+        ...directives
+    ],
+    exports: [
+        ...components,
+        ...directives
+    ]
 })
 export class IonicSelectableModule { }
