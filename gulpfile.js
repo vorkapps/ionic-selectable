@@ -115,7 +115,7 @@ async function modifyPackageJson() {
       .pipe(
         jsonEditor(function (json) {
           json.main = `bundles/${paths.dist.bundles.minFile}`;
-          json.es2020 = `esm2020/${paths.dist.esm2020.minFile}`;
+          json.es2015 = `esm2015/${paths.dist.esm2015.minFile}`;
           delete json.cordova;
           delete json.devDependencies;
           delete json.dependencies;

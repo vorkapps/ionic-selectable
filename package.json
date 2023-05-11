@@ -32,7 +32,11 @@
   "module": "ionic-selectable.js",
   "types": "ionic-selectable.d.ts",
   "peerDependencies": {
-    "@ionic/angular": ">=5.0.0"
+    "@ionic/angular": ">=5.0.0",
+    "@angular/cdk": "^14.2.7",
+    "@types/estree": "^1.0.1",
+    "cordova-android": "7.0.0",
+    "cordova-ios": "^5.0.1"    
   },
   "devDependencies": {
     "@angular-devkit/architect": "^0.1402.11",
@@ -69,7 +73,7 @@
     "gulp": "4.0.2",
     "gulp-json-editor": "2.4.2",
     "gulp-rename": "1.4.0",
-    "gulp-sass": "4.1.0",
+    "gulp-sass": "^5.1.0",
     "gulp-uglify-es": "1.0.4",
     "ionicons": "~5.0.1",
     "jasmine-core": "~3.6.0",
@@ -80,6 +84,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^14.2.2",
+    "node-sass": "^7.0.3",
     "protractor": "~7.0.0",
     "rxjs": "^7.5.0",
     "sw-toolbox": "3.6.0",
@@ -98,7 +103,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "gulp": "gulp",
-    "build.ng": "ng-packagr -p package.json"
+    "build.ng": "rm -r ./dist || true && ng-packagr",
+    "pub": "npm run build.ng && npm publish ./dist/ --registry http://localhost:4873"
   },
   "cordova": {
     "plugins": {
@@ -116,9 +122,6 @@
       "ios"
     ]
   },
-  "dependencies": {
-    "@types/estree": "^1.0.1",
-    "cordova-android": "7.0.0",
-    "cordova-ios": "^5.0.1"
+  "dependencies": {    
   }
 }
