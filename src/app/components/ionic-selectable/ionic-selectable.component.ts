@@ -1400,7 +1400,7 @@ export class IonicSelectableComponent implements ControlValueAccessor, OnInit, D
       // so unsubscribe in both success and fail cases.
       self._addItemObservable = self.onItemsChange.asObservable().subscribe(() => {
         self._addItemObservable.unsubscribe();
-        resolve();
+        resolve(item);
       }, () => {
         self._addItemObservable.unsubscribe();
         reject();
@@ -1476,7 +1476,7 @@ export class IonicSelectableComponent implements ControlValueAccessor, OnInit, D
       // so unsubscribe in both success and fail cases.
       self._deleteItemObservable = self.onItemsChange.asObservable().subscribe(() => {
         self._deleteItemObservable.unsubscribe();
-        resolve();
+        resolve(item);
       }, () => {
         self._deleteItemObservable.unsubscribe();
         reject();
@@ -1678,7 +1678,7 @@ export class IonicSelectableComponent implements ControlValueAccessor, OnInit, D
       }
 
       self._modalComponent._content.scrollToTop().then(() => {
-        resolve();
+        resolve(0);
       });
     });
   }
@@ -1700,7 +1700,7 @@ export class IonicSelectableComponent implements ControlValueAccessor, OnInit, D
       }
 
       self._modalComponent._content.scrollToBottom().then(() => {
-        resolve();
+        resolve(0);
       });
     });
   }
