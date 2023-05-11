@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $icon-color: #999;
 $placeholder-color: #999;
 $padding: 16px;
@@ -133,11 +135,6 @@ $item-padding-end-ios: 8px;
     /*Occupy 100% of width when there's no label.*/
     max-width: 100%;
     width: 100%;
-    &-value {
-      &-item {
-        text-align: right;
-      }
-    }
   }
   &-label-stacked,
   &-label-floating {
@@ -205,10 +202,10 @@ $item-padding-end-ios: 8px;
   }
   &.ionic-selectable-modal-can-clear.ionic-selectable-modal-is-multiple {
     .footer .col:first-child {
-      padding-right: $padding / 2;
+      padding-right: math.div($padding, 2);
     }
     .footer .col:last-child {
-      padding-left: $padding / 2;
+      padding-left: math.div($padding , 2);
     }
   }
   &.ionic-selectable-modal-is-searching {
@@ -230,4 +227,9 @@ $item-padding-end-ios: 8px;
       padding-top: var(--ion-safe-area-top, 0);
     }
   }
+}
+
+cdk-virtual-scroll-viewport {
+  height: 100%;
+  width: 100%;
 }
